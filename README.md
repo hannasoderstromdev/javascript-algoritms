@@ -2,7 +2,7 @@
 
 Snippets for a bunch of useful JavaScript algorithms.
 
-## Beginner
+## Complexity - Beginner
 
 | naiveSearch()        |                                                                            |
 | -------------------- | -------------------------------------------------------------------------- |
@@ -36,7 +36,7 @@ Snippets for a bunch of useful JavaScript algorithms.
 | _Negative_           | Inefficient for large data sets.                                                                  |
 | _Efficiency Average_ | O(n^2)                                                                                            |
 
-## Intermediate
+## Complexity - Intermediate
 
 | mergeSort()          |                                                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,4 +54,12 @@ Snippets for a bunch of useful JavaScript algorithms.
 | _Negative_           | With too large data sets you might run out of call stacks.                                                                                                                     |
 | _Efficiency Average_ | O(n log n)                                                                                                                                                                     |
 
-## Expert
+## Complexity - Expert
+
+| radixSort()          |                                                                                                           |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| _Type_               | Loop in loop                                                                                              |
+| _How it works_       | Sorts an array of integers by loop-sorting them in buckets by number and then putting them back together. |
+| _Positive_           | Fast.                                                                                                     |
+| _Negative_           | Only works on integers.                                                                                   |
+| _Efficiency Average_ | O(n k)                                                                                                    |
