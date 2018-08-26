@@ -153,5 +153,85 @@ function mergeSort(arr) {
 
   return merge(left, right)
 }
+// mergeSort([10, 24, 76, 73])
 
-mergeSort([10, 24, 76, 73])
+/* 
+  Quick Sort with Pivot
+  recursive function
+  Time Complexity Average: O(n log n)
+*/
+
+function pivot(arr, start = 0, end = arr.length + 1) {
+  function swap(array, i, j) {
+    const temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+
+  let pivot = arr[start]
+  let swapIdx = start
+
+  for (let i = start + 1; i < arr.length; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++
+      swap(arr, swapIdx, i)
+    }
+  }
+  swap(arr, start, swapIdx)
+  return swapIdx
+}
+
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(arr, left, right)
+    quickSort(arr, left, pivotIndex - 1)
+    quickSort(arr, pivotIndex + 1, right)
+  }
+  return arr
+}
+
+//console.log(quickSort([100, -3, 4, 6, 9, 1, 2, 5, 3]))
+
+// 3. EXPERT SORTING ALGORITHMS
+
+/*
+  Radix Sort
+  (Only works with Integers)
+  Time Complexity Average: O(nk), n = length of array, k = number of digits average
+*/
+
+// Helper function getDigit
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10
+}
+
+// Helper function digitCount
+function digitCount(num) {
+  if (num === 0) return 1
+  return Math.floor(Math.log10(Math.abs(num))) + 1
+}
+
+// Helper function mostDigits (implementing digitCount)
+function mostDigits(numArray) {
+  let maxDigits = 0
+  for (let i = 0; i < numArray.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(numArray[i]))
+  }
+  return maxDigits
+}
+
+function radixSort(numArray) {
+  let maxDigitCount = mostDigits(numArray)
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = Array.from({ length: 10 }, () => [])
+    for (let i = 0; i < numArray.length; i++) {
+      let digit = getDigit(numArray[i], k)
+      digitBuckets[digit].push(numArray[i])
+    }
+    numArray = [].concat(...digitBuckets)
+    console.log(numArray)
+  }
+  return numArray
+}
+
+radixSort([23, 345, 5467, 12, 2345, 9852])
