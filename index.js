@@ -100,9 +100,7 @@ function insertionSort(arr) {
 
 // 2. INTERMEDIATE SORTING ALGORITHMS
 
-/* 
-  Merge part of mergeSort
-*/
+// Helper function Merge
 function merge(arr1, arr2) {
   console.log('merge!')
   const results = []
