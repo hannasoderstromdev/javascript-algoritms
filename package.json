@@ -1,8 +1,12 @@
 {
   "name": "javascript-algoritms",
   "version": "1.0.0",
-  "description": "Snippets for a bunch of useful JavaScript algorithms.",
-  "main": "index.js",
+  "description": "A collection of sorting-algorithms",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "type": "module",
   "scripts": {
     "test": "jest --watch"
