@@ -1,8 +1,10 @@
 # JavaScript Algorithms
 
-Snippets for a bunch of useful JavaScript algorithms.
+Library for a bunch of useful JavaScript algorithms.
 
-## Complexity - Beginner
+## Complexity - Low
+
+### Search
 
 | naiveSearch()        |                                                                            |
 | -------------------- | -------------------------------------------------------------------------- |
@@ -11,6 +13,8 @@ Snippets for a bunch of useful JavaScript algorithms.
 | _Positive_           | Simple, good for small data sets.                                          |
 | _Negative_           | Inefficient for large data sets.                                           |
 | _Efficiency Average_ | O(n^2)                                                                     |
+
+### Sorting - Low
 
 | bubbleSort()         |                                             |
 | -------------------- | ------------------------------------------- |
@@ -36,7 +40,9 @@ Snippets for a bunch of useful JavaScript algorithms.
 | _Negative_           | Inefficient for large data sets.                                                                  |
 | _Efficiency Average_ | O(n^2)                                                                                            |
 
-## Complexity - Intermediate
+## Complexity - Medium
+
+### Sorting - Medium
 
 | mergeSort()          |                                                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +60,7 @@ Snippets for a bunch of useful JavaScript algorithms.
 | _Negative_           | With too large data sets you might run out of call stacks.                                                                                                                     |
 | _Efficiency Average_ | O(n log n)                                                                                                                                                                     |
 
-## Complexity - Expert
+## Complexity - High
 
 | radixSort()          |                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------- |
