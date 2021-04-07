@@ -1,3 +1,5 @@
+import Node from "./Node";
+
 /*
  * Data structure of nodes that contains a head, tail
  * and length property.
@@ -12,7 +14,7 @@
  * Good for fast insertion and deletion of data.
  * Bad for accessing data.
  */
-export class SinglyLinkedList {
+export default class SinglyLinkedList {
   head: Node | null;
   tail: Node | null;
   length: number;
@@ -110,7 +112,7 @@ export class SinglyLinkedList {
   set(n: number, val: any): boolean {
     const foundNode = this.get(n);
 
-    if (foundNode) {
+    if (foundNode !== null && foundNode !== undefined) {
       foundNode.val = val;
       return true;
     }
@@ -173,15 +175,5 @@ export class SinglyLinkedList {
     }
 
     return this;
-  }
-}
-
-class Node {
-  val: any;
-  next: Node | null;
-
-  constructor(val: any) {
-    this.val = val;
-    this.next = null;
   }
 }
