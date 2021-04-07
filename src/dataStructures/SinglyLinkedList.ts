@@ -25,6 +25,7 @@ export class SinglyLinkedList {
 
   push(val: any): SinglyLinkedList {
     const newNode = new Node(val);
+
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
@@ -40,9 +41,7 @@ export class SinglyLinkedList {
   }
 
   pop(): Node | undefined {
-    if (!this.head) {
-      return undefined;
-    }
+    if (!this.head) return undefined;
 
     let current = this.head;
     let newTail = current;
@@ -65,9 +64,7 @@ export class SinglyLinkedList {
   }
 
   shift(): Node | undefined {
-    if (!this.head) {
-      return undefined;
-    }
+    if (!this.head) return undefined;
 
     let removedHead = this.head;
     this.head = removedHead.next;
@@ -112,6 +109,7 @@ export class SinglyLinkedList {
 
   set(n: number, val: any): boolean {
     const foundNode = this.get(n);
+
     if (foundNode) {
       foundNode.val = val;
       return true;
@@ -120,30 +118,61 @@ export class SinglyLinkedList {
   }
 
   insert(n: number, val: any): boolean {
-    if (n < 0 || n > this.length) {
-      return false;
-    }
+    if (n < 0 || n > this.length) return false;
+    if (n === 0) return Boolean(this.unshift(val));
+    if (n === this.length) return Boolean(this.push(val));
 
-    if (n === 0) {
-      return Boolean(this.unshift(val));
-    }
+    const prevNode = this.get(n - 1);
 
-    if (n === this.length) {
-      return Boolean(this.push(val));
-    }
-
-    const prev = this.get(n - 1);
-
-    if (prev) {
+    if (prevNode) {
       const newNode = new Node(val);
-      const temp = prev?.next;
-      prev.next = newNode;
+      const temp = prevNode?.next;
+      prevNode.next = newNode;
       newNode.next = temp;
       this.length++;
       return true;
     }
 
     return false;
+  }
+
+  remove(n: number): Node | undefined {
+    if (n < 0 || n >= this.length) return undefined;
+    if (n === 0) return this.shift();
+    if (n === this.length - 1) return this.pop();
+
+    const prevNode = this.get(n - 1);
+
+    if (prevNode && prevNode.next) {
+      const removed = prevNode?.next;
+      prevNode.next = removed?.next;
+      this.length--;
+      return removed;
+    }
+  }
+
+  reverse(): SinglyLinkedList {
+    // swap head and tail
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let prev = null;
+    let next = null;
+
+    // swap all nodes
+    for (let i = 0; i < this.length; i++) {
+      next = node?.next;
+      if (node) {
+        node.next = prev;
+        prev = node;
+      }
+      if (next) {
+        node = next;
+      }
+    }
+
+    return this;
   }
 }
 

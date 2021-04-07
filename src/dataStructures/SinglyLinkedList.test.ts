@@ -238,4 +238,95 @@ describe("SinglyLinkedList", () => {
       expect(list.insert(0, "new value")).toEqual(true);
     });
   });
+
+  describe("remove", () => {
+    it("returns undefined if n is less than zero", () => {
+      const list = new SinglyLinkedList();
+      expect(list.remove(-1)).toEqual(undefined);
+    });
+
+    it("returns undefined if n is greater than length", () => {
+      const list = new SinglyLinkedList();
+      expect(list.remove(0)).toEqual(undefined);
+    });
+
+    it("returns first item", () => {
+      const list = new SinglyLinkedList();
+      list.push("value one");
+      list.push("value two");
+      list.push("value three");
+      list.push("value four");
+      expect(list.remove(0)?.val).toEqual("value one");
+    });
+
+    it("returns last item", () => {
+      const list = new SinglyLinkedList();
+      list.push("value one");
+      list.push("value two");
+      list.push("value three");
+      list.push("value four");
+      expect(list.remove(3)).toEqual({ next: null, val: "value four" });
+    });
+
+    it("returns item in list that is not first or last", () => {
+      const list = new SinglyLinkedList();
+      list.push("value one");
+      list.push("value two");
+      list.push("value three");
+      list.push("value four");
+      expect(list.remove(2)?.val).toEqual("value three");
+    });
+  });
+
+  describe("reverse", () => {
+    it("returns the list in reversed order", () => {
+      const list = new SinglyLinkedList();
+      list.push("value one");
+      list.push("value two");
+      list.push("value three");
+      list.push("value four");
+
+      const listOriginal = {
+        head: {
+          next: {
+            next: {
+              next: { next: null, val: "value four" },
+              val: "value three",
+            },
+            val: "value two",
+          },
+          val: "value one",
+        },
+        length: 4,
+        tail: { next: null, val: "value four" },
+      };
+
+      expect(list).toEqual(listOriginal);
+
+      list.reverse();
+
+      const reversedList = {
+        head: {
+          next: {
+            next: {
+              next: {
+                next: null,
+                val: "value one",
+              },
+              val: "value two",
+            },
+            val: "value three",
+          },
+          val: "value four",
+        },
+        length: 4,
+        tail: {
+          next: null,
+          val: "value one",
+        },
+      };
+
+      expect(list).toEqual(reversedList);
+    });
+  });
 });
