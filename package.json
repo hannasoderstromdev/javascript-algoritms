@@ -1,5 +1,5 @@
 {
-  "name": "javascript-algoritms",
+  "name": "javascript-algorithms",
   "version": "1.0.0",
   "description": "A collection of sorting-algorithms",
   "main": "dist/index.js",
