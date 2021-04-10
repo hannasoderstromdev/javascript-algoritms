@@ -1,65 +1,47 @@
 # JavaScript Algorithms
 
-Snippets for a bunch of useful JavaScript algorithms.
+Library for a bunch of useful JavaScript algorithms.
 
-## Complexity - Beginner
+## Installation
 
-| naiveSearch()        |                                                                            |
-| -------------------- | -------------------------------------------------------------------------- |
-| _Type_               | Loop in loop                                                               |
-| _How it works_       | Compares a string with another string and returns number of matches found. |
-| _Positive_           | Simple, good for small data sets.                                          |
-| _Negative_           | Inefficient for large data sets.                                           |
-| _Efficiency Average_ | O(n^2)                                                                     |
+`npm install javascript-algorithms`
 
-| bubbleSort()         |                                             |
-| -------------------- | ------------------------------------------- |
-| _Type_               | Loop in loop                                |
-| _How it works_       | Swapping, sorting from smallest to largest. |
-| _Positive_           | Simple, good for small data sets.           |
-| _Negative_           | Inefficient for large data sets.            |
-| _Efficiency Average_ | O(n^2)                                      |
+## Content
 
-| selectionSort()      |                                             |
-| -------------------- | ------------------------------------------- |
-| _Type_               | Loop in loop                                |
-| _How it works_       | Swapping, sorting from largest to smallest. |
-| _Positive_           | Simple, good for small data sets.           |
-| _Negative_           | Inefficient for large data sets.            |
-| _Efficiency Average_ | O(n^2)                                      |
+### Sorters
 
-| insertionSort()      |                                                                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------- |
-| _Type_               | Loop in loop                                                                                      |
-| _How it works_       | Sorting into new array.                                                                           |
-| _Positive_           | Simple, good for small data sets and nearly sorted data, or when new data is addded continuously. |
-| _Negative_           | Inefficient for large data sets.                                                                  |
-| _Efficiency Average_ | O(n^2)                                                                                            |
+The sorters package contains a number of different kind of sorters which have different benefits and strengths. You can read more about them in detail [here]().
 
-## Complexity - Intermediate
+### Number Generators
 
-| mergeSort()          |                                                                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| _Type_               | Recursive with loop                                                                                                               |
-| _How it works_       | Splits arrays until each array has only one item (= is sorted). Then merge and sort each array until there's only one array left. |
-| _Positive_           | More complex, good for large data sets                                                                                            |
-| _Negative_           |                                                                                                                                   |
-| _Efficiency Average_ | O(n log n)                                                                                                                        |
+Number generators can be used for creating different kind of numbers and number series.
 
-| quickSort()          |                                                                                                                                                                                |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| _Type_               | Recursive with loop                                                                                                                                                            |
-| _How it works_       | Sets pivot on the mean value, puts smaller numbers left of pivot and larger right of pivot. Then sorts left half and right half of increasingly smaller sizes, until its done. |
-| _Positive_           |                                                                                                                                                                                |
-| _Negative_           | With too large data sets you might run out of call stacks.                                                                                                                     |
-| _Efficiency Average_ | O(n log n)                                                                                                                                                                     |
+### Data Structures
 
-## Complexity - Expert
+JavaScript doesn't inherently support certain types of Lists that exist in other languages. These classes will allow you to use List types such as _Singly Linked List_, _Doubly Linked List_, _Stacks_ and _Queues_.
 
-| radixSort()          |                                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------------- |
-| _Type_               | Loop in loop                                                                                              |
-| _How it works_       | Sorts an array of integers by loop-sorting them in buckets by number and then putting them back together. |
-| _Positive_           | Fast.                                                                                                     |
-| _Negative_           | Only works on integers.                                                                                   |
-| _Efficiency Average_ | O(n k)                                                                                                    |
+## Example (Sorters)
+
+```typescript
+import { sorters } from "javascript-algorithms";
+
+const arrayToSort = [1, 6, 2, 5, 9, 10, 11, 3, 4, 12];
+
+sorters.selectionSorts.quicksort_inPlace(arrayToSort);
+
+console.log(arrayToSort); // [1, 2, 3, 4, 5, 6, 9, 10, 11, 12]
+```
+
+Note: Some sorters sorts in-place, meaning they will mutate the original array. If you want to keep the original array untouched, you need to first make a copy.
+
+```typescript
+import { sorters } from "javascript-algorithms";
+
+const unsortedArray = [1, 6, 2, 5, 9, 10, 11, 3, 4, 12];
+
+const arrayToSort = [...unsortedArray];
+
+sorters.selectionSorts.quicksort_inPlace(arrayToSort);
+
+console.log(arrayToSort); // [1, 2, 3, 4, 5, 6, 9, 10, 11, 12]
+```

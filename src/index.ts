@@ -1,4 +1,7 @@
-import sorters from "./src/sorters";
+import sorters from "./sorters/index";
+import dataStructures from "./dataStructures/index";
+
+export default { sorters, dataStructures };
 
 /*
   Naive String Search
@@ -125,24 +128,3 @@ function maxSubarraySumSlidingWindow(arr: number[], num: number) {
 }
 
 // console.log(maxSubarraySumSlidingWindow([2, 6, 9, 2, 1, 8, 5, 6, 3], 3))
-
-const finders = {
-  naiveSearch,
-};
-
-const counters = {
-  maxSubarraySum,
-  maxSubarraySumSlidingWindow,
-  countUniqueValues,
-};
-
-const misc = {
-  validAnagram,
-};
-
-module.exports = {
-  sorters,
-  finders,
-  counters,
-  misc,
-};
